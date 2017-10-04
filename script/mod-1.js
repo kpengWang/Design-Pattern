@@ -29,8 +29,7 @@ if (!objA || !objB || !objC || !objB) {
         };
     };
 
-
-    //方法都复制到CheckObject的原型连上去了，创建出来的对象都是通过prototype依次寻找，
+    //方法都复制到CheckObject的原型链上去了，创建出来的对象都是通过prototype依次寻找，
     //都绑定在CheckObject的原型上__proto__
     var objC = function() {};
     objC.prototype.fnC1 = function() {
