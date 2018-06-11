@@ -9,16 +9,32 @@ function OP(action) {
 
     switch (action) {
         case "last":
-            o.information = { currentMusic: "Ich will", status: "200|404", message: "上一曲" };
+            o.information = {
+                currentMusic: "Ich will",
+                status: "200|404",
+                message: "上一曲"
+            };
             break;
         case "next":
-            o.information = { currentMusic: "一人我编程累", status: "200|404", message: "下一曲" };
+            o.information = {
+                currentMusic: "一人我编程累",
+                status: "200|404",
+                message: "下一曲"
+            };
             break;
         case "play":
-            o.information = { currentMusic: "se you again", status: "200|500", message: "播放" };
+            o.information = {
+                currentMusic: "se you again",
+                status: "200|500",
+                message: "播放"
+            };
             break;
         case "mute":
-            o.information = { currentMusic: "see you again", status: "200|500", message: "静音" };
+            o.information = {
+                currentMusic: "see you again",
+                status: "200|500",
+                message: "静音"
+            };
             break;
     }
     return o;
@@ -49,16 +65,32 @@ var OO = function(action) {
 
 OO.prototype = {
     last: function() {
-        this.information = { currentMusic: "Ich will", status: "200|404", message: "上一曲" };
+        this.information = {
+            currentMusic: "Ich will",
+            status: "200|404",
+            message: "上一曲"
+        };
     },
     next: function() {
-        this.information = { currentMusic: "一人我编程累", status: "200|404", message: "下一曲" };
+        this.information = {
+            currentMusic: "一人我编程累",
+            status: "200|404",
+            message: "下一曲"
+        };
     },
     play: function() {
-        this.information = { currentMusic: "se you again", status: "200|500", message: "正在播放" };
+        this.information = {
+            currentMusic: "se you again",
+            status: "200|500",
+            message: "正在播放"
+        };
     },
     mute: function() {
-        this.information = { currentMusic: "see you again", status: "200|500", message: "静音" };
+        this.information = {
+            currentMusic: "see you again",
+            status: "200|500",
+            message: "静音"
+        };
     }
 };
 
@@ -87,16 +119,32 @@ var wyMusic = function(action) {
 
 wyMusic.prototype = {
     last: function() {
-        this.information = { currentMusic: "Ich will", status: "200|404", message: "上一曲" };
+        this.information = {
+            currentMusic: "Ich will",
+            status: "200|404",
+            message: "上一曲"
+        };
     },
     next: function() {
-        this.information = { currentMusic: "一人我编程累", status: "200|404", message: "下一曲" };
+        this.information = {
+            currentMusic: "一人我编程累",
+            status: "200|404",
+            message: "下一曲"
+        };
     },
     play: function() {
-        this.information = { currentMusic: "se you again", status: "200|500", message: "正在播放" };
+        this.information = {
+            currentMusic: "se you again",
+            status: "200|500",
+            message: "正在播放"
+        };
     },
     mute: function() {
-        this.information = { currentMusic: "see you again", status: "200|500", message: "静音" };
+        this.information = {
+            currentMusic: "see you again",
+            status: "200|500",
+            message: "静音"
+        };
     }
 };
 
@@ -108,16 +156,32 @@ var qqMusic = function(action) {
 };
 qqMusic.prototype = {
     last: function() {
-        this.information = { currentMusic: "Ich will", status: "200|404", message: "上一曲" };
+        this.information = {
+            currentMusic: "Ich will",
+            status: "200|404",
+            message: "上一曲"
+        };
     },
     next: function() {
-        this.information = { currentMusic: "网易才low", status: "200|404", message: "下一曲" };
+        this.information = {
+            currentMusic: "网易才low",
+            status: "200|404",
+            message: "下一曲"
+        };
     },
     play: function() {
-        this.information = { currentMusic: "se you again", status: "200|500", message: "正在播放" };
+        this.information = {
+            currentMusic: "se you again",
+            status: "200|500",
+            message: "正在播放"
+        };
     },
     mute: function() {
-        this.information = { currentMusic: "see you again", status: "200|500", message: "静音" };
+        this.information = {
+            currentMusic: "see you again",
+            status: "200|500",
+            message: "静音"
+        };
     }
 };
 
@@ -144,8 +208,6 @@ console.log("接口状态:" + music.information.status);
 console.log("执行动作后歌曲:" + music.information.currentMusic);
 
 
-
-
 /***--------------------------------
  * 四  使用类式继承
  * >>!思想是提取公用的方法
@@ -157,16 +219,31 @@ var BaseMusic = function() {
 
 BaseMusic.prototype = {
     last: function() {
-        this.information = { status: "200|404", message: "上一曲" };
+        this.information = {
+            status: "200|404",
+            message: "上一曲"
+        };
     },
     next: function() {
-        this.information = { currentMusic: "网易才low", status: "200|404", message: "下一曲" };
+        this.information = {
+            currentMusic: "网易才low",
+            status: "200|404",
+            message: "下一曲"
+        };
     },
     play: function() {
-        this.information = { currentMusic: "se you again", status: "200|500", message: "正在播放" };
+        this.information = {
+            currentMusic: "se you again",
+            status: "200|500",
+            message: "正在播放"
+        };
     },
     mute: function() {
-        this.information = { currentMusic: "see you again", status: "200|500", message: "静音" };
+        this.information = {
+            currentMusic: "see you again",
+            status: "200|500",
+            message: "静音"
+        };
     }
 };
 
@@ -196,7 +273,6 @@ var MusicFactory = function(type) {
             return new WangyiMusicAction();
     }
 };
-
 
 var music = new MusicFactory('wangyi');
 music.next();
