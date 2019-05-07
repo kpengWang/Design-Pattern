@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* Pubsub */
+    function Pubsub() {
+      //存放事件和对应的处理方法
+      this.handles = {}
+    }
+    Pubsub.prototype = {
+      //传入事件类型type和事件处理handle
+      on(type, handle) {
+        if (!this.handles[type]) {
+          this.handles[type] = []
+        }
+        this.handles[type].push(handle)
+      },
+      emit() {
+        //通过传入参数获取事件类型
+        var type = Array.prototype.shift.call(arguments);
+        if (!this.handles[type]) {
+          return false
+        }
+        for (var i = 0; i < this.handles[type].length; i++) {
+          var handle = this.handles[type][i]
+          //执行事件
+          handle.apply(this, arguments)
+        }
+      },
+      off(type, handle) {
+        handles = this.handles[type]
+        if (handles) {
+          if (!handle) {
+            handles.length = 0 //清空数组
+          } else {
+            for (var i = 0; i < handles.length; i++) {
+              var _handle = handles[i]
+              if (_handle === handle) {
+                handles.splice(i, 1)
+              }
+            }
+          }
+        }
+      }
+    }
+
+    var p1 = new Pubsub();
+    p1.on('mm', function (name) {
+      console.log('mm: ' + name);
+    });
+    p1.emit('mm', '哈哈哈哈');
+    console.log('===============');
+    var p2 = new Pubsub();
+    var fn = function (name) {
+      console.log('mm2: ' + name);
+    };
+    var fn2 = function (name) {
+      console.log('mm222: ' + name);
+    };
+    p2.on('mm2', fn);
+    p2.on('mm2', fn2);
+    p2.emit('mm2', '哈2哈2哈2哈2');
+    console.log('-------------');
+    p2.off('mm2', fn);
+    p2.emit('mm2', '哈2哈2哈2哈2');
+    console.log('-------------');
+    p2.off('mm2');
+    p2.emit('mm2', '哈2哈2哈2哈2');
+    console.log('-------------');
+  </script>
+</body>
+
+</html>
